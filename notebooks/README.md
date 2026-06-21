@@ -44,3 +44,17 @@ for n in 01 02 03 04 05 06 07 08 09; do python3 _build_$n.py; done
 ```
 
 (`_nbutil.py` מכיל פונקציות עזר משותפות.)
+
+## ייצוא ל-PDF
+
+`FUSION_Boot_Camp_2026_notebooks.pdf` הוא ייצוא משולב של כל עשר המחברות (50 עמ').
+הוא נבנה ע"י `_make_pdf.py`, שמריץ את המחברות וממיר ל-PDF עם תמיכה מלאה בעברית:
+
+```bash
+pip install nbconvert weasyprint python-bidi pymupdf
+# נדרש פונט עברי (למשל Noto Sans Hebrew) מותקן במערכת
+python3 _make_pdf.py
+```
+
+הסקריפט מטפל ב: כיוון RTL לטקסט עברי (LTR לקוד), סידור עברית נכון בגרפים (bidi),
+ורינדור נוסחאות LaTeX לתמונות (כולל מטריצות) — כיוון ש-WeasyPrint אינו מריץ MathJax.
